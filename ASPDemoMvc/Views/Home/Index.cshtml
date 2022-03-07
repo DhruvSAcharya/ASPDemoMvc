@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+@model ASPDemoMvc.Models.ServiceRequest
+
+<div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-10 d-flex justify-content-center align-content-center">
+                    <h1>Service Request Portal</h1>
+                </div>
+                <div class="col mt-2">
+                    <form asp-action="Logout">
+                        <input type="submit" class="btn btn-secondary" value="Logout"/>
+                    </form>
+                    @*<a class="btn btn-danger" asp-controller="Login" asp-action="Index">Logout</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-light rounded p-2">
+        <div class="mb-3">
+            <h3>Service Request</h3>
+        </div>
+        <form method="post" asp-controller="Home" asp-action="SaveData">
+            @*<div class="row m-1 mb-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <label asp-for="Id"> ID</label>
+                </div>
+                <div class="col">
+                    <input asp-for="Id" type="text" class="form-control" placeholder="Id">
+                </div>
+            </div>*@
+            <div class="row m-1 mb-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <label asp-for="fName"> First Name</label>
+                </div>
+                <div class="col">
+                    <input asp-for="fName" type="text" class="form-control" placeholder="First name">
+                    <span asp-validation-for="fName" class="text-danger"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <label asp-for="lName">Last Name</label>
+                </div>
+                <div class="col">
+                    <input asp-for="lName" type="text" class="form-control" placeholder="Last name">
+                    <span asp-validation-for="lName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row m-1 mb-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <label asp-for="mobileNo"> Mobile No.</label>
+                </div>
+                <div class="col">
+                    <input asp-for="mobileNo" type="number" class="form-control" placeholder="Mobile Number">
+                    <span asp-validation-for="mobileNo" class="text-danger"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <label asp-for="email">Email</label>
+                </div>
+                <div class="col">
+                    <input asp-for="email" type="email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row m-1 mb-2">
+                <div class="col-2">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <label asp-for="enquiryPurpose">Enquiry Purpose </label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <select asp-for="enquiryPurpose" id="inputState" class="form-control">
+                        <option selected></option>
+                        <option>Interview</option>
+                        <option>Courier</option>
+                    </select>
+                    <span asp-validation-for="enquiryPurpose" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row m-1 mb-2">
+                <div class="col-2">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <label asp-for="comments">Comments </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <textarea asp-for="comments" class="form-control"></textarea>
+                    <span asp-validation-for="comments" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row m-1">
+                <div class="col-1">
+                    <input type="submit" class="btn btn-primary" value="save">
+                </div>
+                <div class="col-1">
+                    <input type="reset" class="btn btn-info" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr />
+
+    <form asp-action="DisplayRequest">
+        <input class="btn btn-primary" type="submit" value="Display Data" />
+    </form>
+
+
+</div>
+
+@section Scripts{ 
+    @{ <partial name="_ValidationScriptsPartial" />}
+}

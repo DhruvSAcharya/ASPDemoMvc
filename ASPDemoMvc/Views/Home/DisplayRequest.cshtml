@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "DisplayRequest";
+}
+@model IEnumerable<ASPDemoMvc.Models.ServiceRequest>
+
+<div class="d-flex justify-content-between">
+    <div >
+        <h1>DisplayRequest</h1>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="index">Home</a>
+    </div>
+</div>
+
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>Full Name</td>
+                <td>Mobile No.</td>
+                <td>Email</td>
+                <td>Purpose</td>
+                <td>Coments</td>
+                <td>Operations</td>
+            </tr>
+        </thead>
+        @if (@Model != null)
+        {
+            <tbody>
+        
+                @foreach (var obj in Model)
+                {
+                <tr>
+                    <td>@obj.Id.ToString()</td>
+                    <td>@obj.fName @obj.lName</td>
+                    <td>@obj.mobileNo</td>
+                    <td>@obj.email</td>
+                    <td>@obj.enquiryPurpose</td>
+                    <td>@obj.comments</td>
+                    <form asp-action="DeleteRequest">
+                        <input type="hidden" value="@obj.Id" name="id" />
+                    <td><input class="btn btn-danger" type="submit" value="Delete" /></td>
+                    </form>
+                    <form asp-action="UpdateRequest">
+                        <input type="hidden" value="@obj.Id" name="id" />
+                    <td><input class="btn btn-secondary" type="submit" value="Update" /></td>
+                    </form>
+
+                </tr>
+                }
+            </tbody>
+        }
+
+    </table>
+</div>
+
